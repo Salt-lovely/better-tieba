@@ -1,0 +1,26 @@
+{
+  "name": "better-tieba",
+  "version": "0.1.0",
+  "description": "更好的贴吧看帖、管理体验",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/index.ts --bundle --outdir=dist --legal-comments=eof"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Salt-lovely/better-tieba.git"
+  },
+  "keywords": [
+    "tieba"
+  ],
+  "author": "Salt-lovely",
+  "license": "MulanPSL-2.0",
+  "bugs": {
+    "url": "https://github.com/Salt-lovely/better-tieba/issues"
+  },
+  "homepage": "https://github.com/Salt-lovely/better-tieba#readme",
+  "devDependencies": {
+    "esbuild": "^0.14.11"
+  }
+}
