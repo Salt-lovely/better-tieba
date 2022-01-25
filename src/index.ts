@@ -1,7 +1,7 @@
 /*
  * @Author: Salt
  * @Date: 2022-01-19 22:52:37
- * @LastEditTime: 2022-01-25 21:18:25
+ * @LastEditTime: 2022-01-26 00:04:31
  * @LastEditors: Salt
  * @Description: 入口文件
  */
@@ -21,7 +21,10 @@
 
 */
 import modules from './modules'
+import { docReady } from './utils/utils'
 
-window.addEventListener('DOMContentLoaded', () => {
+function main() {
   modules()
-})
+}
+
+docReady(main)
