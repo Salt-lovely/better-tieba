@@ -2,7 +2,7 @@
  * @Author: Salt
  * @Date: 2022-01-25 23:10:30
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-25 23:18:37
+ * @LastEditTime: 2022-01-25 23:53:34
  * @Description: 这个文件的功能
  * @FilePath: \better-tieba\src\utils\storage.ts
  */
@@ -105,7 +105,7 @@ export function readAndListen<T>(props: {
   } = props
 
   let v = unsafeRead<T>(key)
-  if (defaultValue !== undefined && v !== null) {
+  if (defaultValue !== undefined && v === null) {
     write(key, defaultValue)
     v = defaultValue
   }

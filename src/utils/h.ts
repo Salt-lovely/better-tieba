@@ -2,7 +2,7 @@
  * @Author: Salt
  * @Date: 2022-01-21 23:00:09
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-22 01:06:46
+ * @LastEditTime: 2022-01-25 23:59:04
  * @Description: 提供一个快速生成 DOM 元素的方法
  * @FilePath: \better-tieba\src\utils\h.ts
  */
@@ -66,7 +66,7 @@ const h: hyperFunction = (
         } else {
           // 其他类型
           // @ts-ignore
-          el[attr] = value
+          el[_attr] = value
         }
       }
     }
