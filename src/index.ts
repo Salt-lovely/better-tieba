@@ -1,7 +1,7 @@
 /*
  * @Author: Salt
  * @Date: 2022-01-19 22:52:37
- * @LastEditTime: 2022-01-26 00:04:31
+ * @LastEditTime: 2022-01-26 22:44:29
  * @LastEditors: Salt
  * @Description: 入口文件
  */
@@ -23,8 +23,4 @@
 import modules from './modules'
 import { docReady } from './utils/utils'
 
-function main() {
-  modules()
-}
-
-docReady(main)
+docReady(modules)
