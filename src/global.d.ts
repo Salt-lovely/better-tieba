@@ -2,11 +2,16 @@
  * @Author: Salt
  * @Date: 2022-01-22 00:48:26
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-25 23:13:01
+ * @LastEditTime: 2022-01-26 22:54:52
  * @Description: 全局类型声明
  * @FilePath: \better-tieba\src\global.d.ts
  */
-type acceptableChildren = string | Node | (string | Node)[]
+type solvableChild = string | boolean | number | Node | undefined | null
+type solvableChildren = solvableChild[]
+type acceptableChildren =
+  | solvableChild
+  | solvableChildren
+  | (solvableChild | solvableChildren)[]
 
 interface componentFunction<Props extends object | null> {
   (): HTMLElement
@@ -57,7 +62,7 @@ interface basicSettingOption<T> {
   key: string
   /** 配置项标题 */
   title: string
-  /** 配置项第一次挂载时调用的函数，没有的话用回调函数代替 */
+  /** 配置项新建、修改时调用的函数，没有的话用回调函数代替 */
   initCallback?: (value: T) => unknown
   /** 回调函数 */
   callback: (newValue: T, oldValue: T) => unknown

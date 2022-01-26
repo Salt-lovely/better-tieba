@@ -2,16 +2,20 @@
  * @Author: Salt
  * @Date: 2022-01-21 23:00:09
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-25 23:59:04
+ * @LastEditTime: 2022-01-26 22:42:03
  * @Description: 提供一个快速生成 DOM 元素的方法
  * @FilePath: \better-tieba\src\utils\h.ts
  */
 
 function handleChildren(children: acceptableChildren[] = []): Node[] {
-  return (children.flat(Infinity) as unknown as (string | Node)[]).map(
-    (child) =>
-      typeof child === 'string' ? document.createTextNode(child) : child
-  )
+  const res: Node[] = []
+  const flattedChildren = children.flat(Infinity) as unknown[]
+  flattedChildren.forEach((child) => {
+    if (child instanceof Node) res.push(child)
+    else if (typeof child === 'string') res.push(document.createTextNode(child))
+    else if (typeof child === 'number') res.push(document.createTextNode(`${child}`))
+  })
+  return res
 }
 
 /** 用法：
@@ -70,6 +74,8 @@ const h: hyperFunction = (
         }
       }
     }
+    if (children?.length)
+      handleChildren(children).forEach((child) => el.appendChild(child))
     return el
   } else if (typeof cmd === 'function') {
     return cmd(props || {}, ...handleChildren(children))
