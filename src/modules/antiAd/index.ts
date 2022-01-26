@@ -2,7 +2,7 @@
  * @Author: Salt
  * @Date: 2022-01-19 23:13:34
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-26 00:11:17
+ * @LastEditTime: 2022-01-26 23:15:02
  * @Description: 反广告功能入口文件
  * @FilePath: \better-tieba\src\modules\antiAd\index.ts
  */
@@ -13,8 +13,9 @@ import { setSetting } from '../core/settings'
 /** 反广告功能入口方法 */
 export default function () {
   const antiAdStyle = h('style', {
-    id: 'asdf',
     textContent: `/* 反广告功能 */
+/* 顶部广告（少见） */
+.head_ad_pop,
 /* 左侧跟随广告 */
 body > div.clearfix:not(.wrap1),
 /* 吧内右侧广告 */
@@ -43,11 +44,10 @@ body > div.clearfix:not(.wrap1),
   const setAntiAd = (enable: boolean) => {
     if (enable) document.head.appendChild(antiAdStyle)
     else antiAdStyle.parentElement?.removeChild(antiAdStyle)
-    console.log('antiAdStyle', antiAdStyle)
   }
   setSetting({
     type: 'switch',
-    title: '',
+    title: '隐藏贴吧广告',
     key: 'anti-ad-basic',
     callback: setAntiAd,
     defaultValue: true,
