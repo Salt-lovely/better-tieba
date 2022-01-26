@@ -2,7 +2,7 @@
  * @Author: Salt
  * @Date: 2022-01-26 22:31:53
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-26 23:51:17
+ * @LastEditTime: 2022-01-27 00:32:01
  * @Description: 提供配置面板的预制组件
  * @FilePath: \better-tieba\src\modules\core\settingComponents.ts
  */
@@ -41,6 +41,7 @@ const style = h('style', null, `
   height: 24px;
   border-radius: 12px;
   box-shadow: inset 0 0 4px #2226;
+  cursor: pointer;
   transition: 240ms ease;
 }
 .setting-salt-switch::after {

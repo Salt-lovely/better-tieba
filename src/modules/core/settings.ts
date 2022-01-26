@@ -2,7 +2,7 @@
  * @Author: Salt
  * @Date: 2022-01-25 22:08:07
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-26 23:36:31
+ * @LastEditTime: 2022-01-27 00:32:21
  * @Description: 提供配置面板功能
  * @FilePath: \better-tieba\src\modules\core\settings.ts
  */
@@ -10,15 +10,113 @@ import h from '../../utils/h'
 import { readAndListen } from '../../utils/storage'
 import { switchSetting } from './settingComponents'
 
+// 样式
+const style = h(
+  'style',
+  null,
+  `
+#salt-better-tieba-setting-panel-side-btn {
+  position: fixed;
+  right: 0;
+  top: 40vh;
+  cursor: pointer;
+  user-select: none;
+}
+#salt-better-tieba-setting-panel {
+  position: fixed;
+  width: 50vw;
+  max-height: 60vh;
+  left: 25vw;
+  top: 20vh;
+  border: 8px solid #9999;
+  border-radius: 8px;
+  background-color: #fffb;
+  opacity: 1;
+  transition: 240ms ease;
+}
+@media screen and (max-width: 1800px) {
+  width: 60vw;
+  max-height: 70vh;
+  left: 20vw;
+  top: 15vh;
+}
+@media screen and (max-width: 1600px) {
+  width: 70vw;
+  max-height: 80vh;
+  left: 15vw;
+  top: 10vh;
+}
+@media screen and (max-width: 1200px) {
+  width: 80vw;
+  max-height: 90vh;
+  left: 10vw;
+  top: 5vh;
+}
+#salt-better-tieba-setting-panel.hide {
+  top: -100vh;
+  opacity: 0;
+}
+
+.salt-better-tieba-setting-panel-header {
+  position: relative;
+  padding: 5px 0 5px 10px;
+  font-size: 20px;
+  line-height: 40px;
+  user-select: none;
+}
+.salt-better-tieba-setting-panel-header .close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  right: 5px;
+  font-size: 30px;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+}
+.salt-better-tieba-setting-panel-header .close:hover {
+  background-color: #9999;
+}
+.salt-better-tieba-setting-panel-header .close:active {
+  background-color: #6669;
+}
+`
+)
+document.head.appendChild(style)
+
 // DOM
-const header = h('div', { className: 'salt-better-tieba-setting-panel-header' })
+const header = h(
+  'div',
+  { className: 'salt-better-tieba-setting-panel-header' },
+  h('span', null, '配置面板'),
+  h(
+    'div',
+    {
+      className: 'close',
+      onclick() {
+        container.className = 'hide'
+      },
+    },
+    '×'
+  )
+)
 const body = h('div', { className: 'salt-better-tieba-setting-panel-body' })
 const container = h(
   'div',
-  { id: 'salt-better-tieba-setting-panel' },
+  {
+    id: 'salt-better-tieba-setting-panel',
+    className: 'hide',
+  },
   header,
   body
 )
+const sideBtn = h('div', {
+  id: 'salt-better-tieba-setting-panel-side-btn',
+  onclick() {
+    container.className = 'show'
+  }
+}, '打开配置面板')
 // 闭包储存的信息
 type settingInfo = { off: () => unknown; component: HTMLElement }
 const settingMap: {
@@ -27,6 +125,7 @@ const settingMap: {
 const prefix = 'salt-better-tieba-settings'
 // TODO
 export function settings() {
+  document.body.appendChild(sideBtn)
   document.body.appendChild(container)
 }
 
