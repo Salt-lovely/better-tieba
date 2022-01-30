@@ -2,12 +2,13 @@
  * @Author: Salt
  * @Date: 2022-01-22 00:13:05
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-26 22:09:18
+ * @LastEditTime: 2022-01-30 12:35:43
  * @Description: 提供垫片功能
  * @FilePath: \better-tieba\src\modules\core\polyfill.ts
  */
 
 import h from '../../utils/h'
+import { extend } from '../../utils/utils'
 
 // https://polyfill.io/v3/polyfill.min.js
 export default function () {
@@ -15,4 +16,12 @@ export default function () {
     src: 'https://polyfill.io/v3/polyfill.min.js',
   })
   document.body.appendChild(polyFillScript)
+  extend(Element.prototype, {
+    $: function (this: Element, selectors: any) {
+      return this.querySelector(selectors)
+    },
+    $$: function (this: Element, selectors: any) {
+      return Array.from(this.querySelectorAll(selectors))
+    },
+  })
 }

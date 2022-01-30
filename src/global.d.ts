@@ -2,10 +2,32 @@
  * @Author: Salt
  * @Date: 2022-01-22 00:48:26
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-26 22:54:52
+ * @LastEditTime: 2022-01-30 13:09:11
  * @Description: 全局类型声明
  * @FilePath: \better-tieba\src\global.d.ts
  */
+// ======================== 原生对象扩展 ========================
+
+interface Element {
+  /** Returns the first element that is a descendant of node that matches selectors. */
+  $<K extends keyof HTMLElementTagNameMap>(
+    selectors: K
+  ): HTMLElementTagNameMap[K] | null
+  $<K extends keyof SVGElementTagNameMap>(
+    selectors: K
+  ): SVGElementTagNameMap[K] | null
+  $<E extends Element = Element>(selectors: string): E | null
+  /** Returns all element descendants of node that match selectors. */
+  $$<K extends keyof HTMLElementTagNameMap>(
+    selectors: K
+  ): Array<HTMLElementTagNameMap[K]>
+  $$<K extends keyof SVGElementTagNameMap>(
+    selectors: K
+  ): Array<SVGElementTagNameMap[K]>
+  $$<E extends Element = Element>(selectors: string): Array<E>
+}
+
+// ======================== h 函数 ========================
 type solvableChild = string | boolean | number | Node | undefined | null
 type solvableChildren = solvableChild[]
 type acceptableChildren =
@@ -20,15 +42,22 @@ interface componentFunction<Props extends object | null> {
   (props: null, ...children: Node[]): HTMLElement
 }
 
+interface mmmm {
+  aaa?: string
+}
+type hyperElementOption<T extends HTMLElement> =  Partial<Omit<T, 'style'>> & {
+  style?: Partial<CSSStyleDeclaration> | undefined
+}
+
 interface hyperFunction {
   // tag => HTMLElement
   <Tag extends keyof HTMLElementTagNameMap>(
     tag: Tag,
-    props?: Partial<HTMLElementTagNameMap[Tag]> | null
+    props?: hyperElementOption<HTMLElementTagNameMap[Tag]> | null
   ): HTMLElementTagNameMap[Tag]
   <Tag extends keyof HTMLElementTagNameMap>(
     tag: Tag,
-    props: Partial<HTMLElementTagNameMap[Tag]> | null,
+    props: hyperElementOption<HTMLElementTagNameMap[Tag]> | null,
     ...children: acceptableChildren[]
   ): HTMLElementTagNameMap[Tag]
   // fn => HTMLElement 无参数
@@ -50,6 +79,7 @@ interface hyperFunction {
   ): HTMLElement
 }
 
+// ======================== 配置面板 ========================
 type SettingOption =
   | switchSettingOption
   | TswitchSettingOption
