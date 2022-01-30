@@ -2,7 +2,7 @@
  * @Author: Salt
  * @Date: 2022-01-25 23:10:30
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-25 23:53:34
+ * @LastEditTime: 2022-01-30 13:17:53
  * @Description: 这个文件的功能
  * @FilePath: \better-tieba\src\utils\storage.ts
  */
@@ -111,7 +111,7 @@ export function readAndListen<T>(props: {
   }
 
   const fn = (ev: StorageEvent) => {
-    if (ev.key !== key && ev.storageArea !== localStorage) return
+    if (ev.key !== key || ev.storageArea !== localStorage) return
     const newValue = parse<T>(ev.newValue)
     const oldValue = parse<T>(ev.oldValue)
     if (callOnChange && newValue === oldValue) return
