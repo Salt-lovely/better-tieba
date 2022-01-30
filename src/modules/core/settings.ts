@@ -2,7 +2,7 @@
  * @Author: Salt
  * @Date: 2022-01-25 22:08:07
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-27 00:32:21
+ * @LastEditTime: 2022-01-30 13:41:19
  * @Description: 提供配置面板功能
  * @FilePath: \better-tieba\src\modules\core\settings.ts
  */
@@ -24,6 +24,7 @@ const style = h(
 }
 #salt-better-tieba-setting-panel {
   position: fixed;
+  display: block !important;
   width: 50vw;
   max-height: 60vh;
   left: 25vw;
@@ -32,7 +33,8 @@ const style = h(
   border-radius: 8px;
   background-color: #fffb;
   opacity: 1;
-  transition: 240ms ease;
+  z-index: 12345;
+  transition: top 240ms cubic-bezier(0.15, 0.9, 0.15, 1.2), opacity 240ms linear;
 }
 @media screen and (max-width: 1800px) {
   width: 60vw;
@@ -55,6 +57,7 @@ const style = h(
 #salt-better-tieba-setting-panel.hide {
   top: -100vh;
   opacity: 0;
+  transition: top 240ms ease-in, opacity 240ms linear;
 }
 
 .salt-better-tieba-setting-panel-header {
