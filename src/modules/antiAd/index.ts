@@ -2,7 +2,7 @@
  * @Author: Salt
  * @Date: 2022-01-19 23:13:34
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-26 23:15:02
+ * @LastEditTime: 2022-03-13 23:01:35
  * @Description: 反广告功能入口文件
  * @FilePath: \better-tieba\src\modules\antiAd\index.ts
  */
@@ -21,11 +21,13 @@ body > div.clearfix:not(.wrap1),
 /* 吧内右侧广告 */
 #aside .fengchao-wrap,
 #aside [id^="mediago-"],
+#aside .lu-frs-wrapper iframe,
 /* 吧内主题帖间插入广告 */
 #thread_list > .fengchao-wrap-feed,
 #thread_list > [id^="mediago-"],
 /* 主题帖内右侧广告 */
 #mediago-tb-pb-list-aside,
+.right_section .lu-pb-wrapper iframe,
 /* 主题帖内楼层间插入广告 */
 #j_p_postlist [id^="mediago-"],
 /* 下载手机应用 */
