@@ -2,12 +2,12 @@
  * @Author: Salt
  * @Date: 2022-01-19 23:13:34
  * @LastEditors: Salt
- * @LastEditTime: 2022-03-13 23:01:35
+ * @LastEditTime: 2022-04-30 13:39:44
  * @Description: 反广告功能入口文件
  * @FilePath: \better-tieba\src\modules\antiAd\index.ts
  */
 
-import h from '../../utils/h'
+import h from 'Utils/h'
 import { setSetting } from '../core/settings'
 
 /** 反广告功能入口方法 */

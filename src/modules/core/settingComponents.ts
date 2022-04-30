@@ -2,13 +2,13 @@
  * @Author: Salt
  * @Date: 2022-01-26 22:31:53
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-27 00:32:01
+ * @LastEditTime: 2022-04-30 15:12:18
  * @Description: 提供配置面板的预制组件
  * @FilePath: \better-tieba\src\modules\core\settingComponents.ts
  */
 
-import h from '../../utils/h'
-import { read, write } from '../../utils/storage'
+import h from 'Utils/h'
+import { read, write } from 'Utils/storage'
 
 const style = h('style', null, `
 /**/
@@ -59,7 +59,7 @@ const style = h('style', null, `
   width: 24px;
 }
 .setting-salt-switch.on {
-  background-color: var(--primary-color, #ff80df);
+  background-color: var(--primary-color, #f986dc);
 }
 .setting-salt-switch.on::after {
   left: 26px;

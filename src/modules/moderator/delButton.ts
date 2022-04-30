@@ -2,11 +2,11 @@
  * @Author: Salt
  * @Date: 2022-01-30 12:14:18
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-30 12:53:46
+ * @LastEditTime: 2022-04-30 13:40:27
  * @Description: 这个文件的功能
  * @FilePath: \better-tieba\src\modules\moderator\delButton.ts
  */
-import h from '../../utils/h'
+import h from 'Utils/h'
 import { setSetting } from '../core/settings'
 
 export default () => {

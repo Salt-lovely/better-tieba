@@ -2,12 +2,12 @@
  * @Author: Salt
  * @Date: 2022-01-25 22:08:07
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-30 13:41:19
+ * @LastEditTime: 2022-04-30 19:23:35
  * @Description: 提供配置面板功能
  * @FilePath: \better-tieba\src\modules\core\settings.ts
  */
-import h from '../../utils/h'
-import { readAndListen } from '../../utils/storage'
+import h from 'Utils/h'
+import { readAndListen } from 'Utils/storage'
 import { switchSetting } from './settingComponents'
 
 // 样式
@@ -18,7 +18,12 @@ const style = h(
 #salt-better-tieba-setting-panel-side-btn {
   position: fixed;
   right: 0;
-  top: 40vh;
+  top: 90vh;
+  padding: .5em 1.5em;
+  border-radius: 8px;
+  box-shadow: #f986dc3f 0px 6px 10px 0px;
+  background-color: var(--primary-color, #f986dc);
+  color: #fff;
   cursor: pointer;
   user-select: none;
 }
@@ -31,7 +36,7 @@ const style = h(
   top: 20vh;
   border: 8px solid #9999;
   border-radius: 8px;
-  background-color: #fffb;
+  background-color: #fffe;
   opacity: 1;
   z-index: 12345;
   transition: top 240ms cubic-bezier(0.15, 0.9, 0.15, 1.2), opacity 240ms linear;
@@ -119,7 +124,7 @@ const sideBtn = h('div', {
   onclick() {
     container.className = 'show'
   }
-}, '打开配置面板')
+}, '配置面板')
 // 闭包储存的信息
 type settingInfo = { off: () => unknown; component: HTMLElement }
 const settingMap: {

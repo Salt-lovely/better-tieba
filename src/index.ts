@@ -1,7 +1,7 @@
 /*
  * @Author: Salt
  * @Date: 2022-01-19 22:52:37
- * @LastEditTime: 2022-01-26 22:44:29
+ * @LastEditTime: 2022-04-30 19:24:15
  * @LastEditors: Salt
  * @Description: 入口文件
  */
@@ -23,4 +23,6 @@
 import modules from './modules'
 import { docReady } from './utils/utils'
 
-docReady(modules)
+if (window.parent !== window)
+  throw new Error('这个脚本不允许在 iframe 等嵌入页面中运行！')
+else docReady(modules)

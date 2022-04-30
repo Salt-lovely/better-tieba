@@ -2,14 +2,14 @@
  * @Author: Salt
  * @Date: 2022-01-22 00:48:26
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-30 13:09:11
+ * @LastEditTime: 2022-03-13 22:55:56
  * @Description: 全局类型声明
  * @FilePath: \better-tieba\src\global.d.ts
  */
 // ======================== 原生对象扩展 ========================
 
 interface Element {
-  /** Returns the first element that is a descendant of node that matches selectors. */
+  /** 返回子元素中第一个匹配选择器的元素 */
   $<K extends keyof HTMLElementTagNameMap>(
     selectors: K
   ): HTMLElementTagNameMap[K] | null
@@ -17,7 +17,7 @@ interface Element {
     selectors: K
   ): SVGElementTagNameMap[K] | null
   $<E extends Element = Element>(selectors: string): E | null
-  /** Returns all element descendants of node that match selectors. */
+  /** 返回子元素中所有匹配选择器的元素 */
   $$<K extends keyof HTMLElementTagNameMap>(
     selectors: K
   ): Array<HTMLElementTagNameMap[K]>
@@ -42,9 +42,6 @@ interface componentFunction<Props extends object | null> {
   (props: null, ...children: Node[]): HTMLElement
 }
 
-interface mmmm {
-  aaa?: string
-}
 type hyperElementOption<T extends HTMLElement> =  Partial<Omit<T, 'style'>> & {
   style?: Partial<CSSStyleDeclaration> | undefined
 }

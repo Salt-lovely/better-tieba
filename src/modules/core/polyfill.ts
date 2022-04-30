@@ -2,13 +2,13 @@
  * @Author: Salt
  * @Date: 2022-01-22 00:13:05
  * @LastEditors: Salt
- * @LastEditTime: 2022-01-30 12:35:43
+ * @LastEditTime: 2022-04-30 13:40:02
  * @Description: 提供垫片功能
  * @FilePath: \better-tieba\src\modules\core\polyfill.ts
  */
 
-import h from '../../utils/h'
-import { extend } from '../../utils/utils'
+import h from 'Utils/h'
+import { extend } from 'Utils/utils'
 
 // https://polyfill.io/v3/polyfill.min.js
 export default function () {
